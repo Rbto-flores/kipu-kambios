@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <AgentProvider withProcessEnv>
       <ActorProvider idlFactory={idlFactory} canisterId={canisterId}>
         <App />
-      </ActorProvider>
+      </ActorProvider> 
     </AgentProvider>
   </React.StrictMode>,
 );

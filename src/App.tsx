@@ -1,9 +1,11 @@
-import './App.css';
+import './styles/index.scss';
 import motokoLogo from './assets/motoko_moving.png';
 import motokoShadowLogo from './assets/motoko_shadow.png';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
 import { useQueryCall, useUpdateCall } from '@ic-reactor/react';
+import Navbar from './components/Navbar';
+
 
 function App() {
   const { data: count, call: refetchCount } = useQueryCall({
@@ -19,7 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <Navbar/>
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo vite" alt="Vite logo" />
         </a>
@@ -39,8 +42,8 @@ function App() {
             <img src={motokoLogo} className="logo motoko" alt="Motoko logo" />
           </span>
         </a>
-      </div>
-      <h1>Vite + React + Motoko</h1>
+      </div> */}
+      {/* <h1>Vite + React + Motoko</h1>
       <div className="card">
         <button onClick={increment} disabled={loading}>
           count is {count?.toString() ?? 'loading...'}
@@ -48,10 +51,10 @@ function App() {
         <p>
           Edit <code>backend/Backend.mo</code> and save to test HMR
         </p>
-      </div>
-      <p className="read-the-docs">
+      </div> */}
+      {/* <p className="read-the-docs">
         Click on the Vite, React, and Motoko logos to learn more
-      </p>
+      </p> */}
     </div>
   );
 }
