@@ -1,13 +1,13 @@
 import './styles/index.css';
-import motokoLogo from './assets/motoko_moving.png';
-import motokoShadowLogo from './assets/motoko_shadow.png';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
-import { useQueryCall, useUpdateCall } from '@ic-reactor/react';
+import { ActorProvider, AgentProvider, useQueryCall, useUpdateCall } from '@ic-reactor/react';
 import Navbar from './components/Navbar';
 import FixedBackground from './components/FixedBackground'; // Importa el nuevo componente
+import { FC } from 'react';
+import React from 'react';
+import { canisterId, idlFactory } from './declarations/backend';
 
-function App() {
+
+export const App: FC = () => {
   const { data: count, call: refetchCount } = useQueryCall({
     functionName: 'get',
   });
@@ -18,14 +18,16 @@ function App() {
       refetchCount();
     },
   });
-
   return (
-    <div className="App">
-      <FixedBackground imageUrl="https://res.cloudinary.com/djc7lpgib/image/upload/v1730428727/fondo_pidry7.png">
-                <Navbar />
-      </FixedBackground>
-    </div>
-  );
+    <React.StrictMode>
+      <AgentProvider withProcessEnv>
+        <ActorProvider idlFactory={idlFactory} canisterId={canisterId}>
+          <FixedBackground imageUrl="https://res.cloudinary.com/djc7lpgib/image/upload/v1730428727/fondo_pidry7.png">
+            <Navbar />
+          </FixedBackground>
+        </ActorProvider>
+      </AgentProvider>
+    </React.StrictMode>
+  )
 }
 
-export default App;

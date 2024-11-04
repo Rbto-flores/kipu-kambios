@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import './styles/index.css';
-import { ActorProvider, AgentProvider } from '@ic-reactor/react';
-import { idlFactory, canisterId } from './declarations/backend';
+import { App } from './App';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <AgentProvider withProcessEnv>
-      <ActorProvider idlFactory={idlFactory} canisterId={canisterId}>
+  <HelmetProvider>
+    <BrowserRouter>
+      <Suspense>
         <App />
-      </ActorProvider> 
-    </AgentProvider>
-  </React.StrictMode>,
-);
+      </Suspense>
+    </BrowserRouter>
+  </HelmetProvider>
+)
